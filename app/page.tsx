@@ -1,8 +1,5 @@
-"use client";
-import dynamic from "next/dynamic";
 import { doto } from "./font";
-
-const Character = dynamic(() => import("./Character"), { ssr: false });
+import Character from "./Character";
 
 export default function Page() {
   return (
@@ -27,6 +24,14 @@ export default function Page() {
 
             <div className="flex gap-4 items-center flex-col sm:flex-row">
               <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+                <a
+                  className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                  href="/ArunKrishna2year-Feb4.pdf"
+                  download="ArunKrishna_2Year.pdf"
+                  rel="noopener noreferrer"
+                >
+                  Resume
+                </a>
                 <a
                   className="flex items-center gap-2 hover:underline hover:underline-offset-4"
                   href="https://github.com/a-humanthing"

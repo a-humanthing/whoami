@@ -13,8 +13,6 @@ export default function Model() {
   );
   const { actions, clips } = useAnimations(animations, scene);
   useEffect(() => {
-    console.log("actions-", actions);
-    console.log("clips-", clips);
     //@ts-ignore
     actions["Experiment"].play().paused = true;
   }, []);
@@ -24,7 +22,7 @@ export default function Model() {
 
     let startTime: number | null = null; // Store the starting time
     const targetOffset = 1; // Final scroll position
-    const duration = 6000; // Total scroll time in milliseconds
+    const duration = 20000; // Total scroll time in milliseconds
 
     const animateScroll = (timestamp: number) => {
       if (startTime === null) startTime = timestamp; // Set start time on first frame
@@ -45,7 +43,7 @@ export default function Model() {
     //@ts-ignore
     actions["Experiment"].time =
       //@ts-ignore
-      (actions["Experiment"].getClip().duration * scroll.offset) / 3;
+      (actions["Experiment"].getClip().duration * scroll.offset) / 1;
   });
 
   return (

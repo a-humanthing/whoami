@@ -26,8 +26,8 @@ export default function Page() {
               <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
                 <a
                   className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                  href="/ArunKrishna2year-Feb4.pdf"
-                  download="ArunKrishna_2Year.pdf"
+                  href="/arunKrishnaV1.pdf"
+                  download="ArunKrishna.pdf"
                   rel="noopener noreferrer"
                 >
                   Resume

@@ -12,13 +12,12 @@ export default function Page() {
             <ul className="list-inside text-sm text-center sm:text-center font-[family-name:var(--font-geist-mono)]">
               <li className="mb-2">
                 <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-                  Software Engineer who's trying to create innovation solutions.
+                  Software Engineer who's trying to create innovative solutions.
                 </code>
               </li>
               <li>
                 Presently focused on development with javascript based
-                solutions, experienced in Standard Product Based Development
-                Lifecyle.
+                solutions, <b>Experienced in e2e Software Product Lifecyle.</b>
               </li>
             </ul>
 

@@ -11,20 +11,30 @@
   "dependencies": {
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^9.0.0-rc.5",
+    "@types/geoip-lite": "^1.4.4",
     "@types/three": "^0.173.0",
+    "@types/ua-parser-js": "^0.7.39",
+    "geoip-lite": "^1.4.10",
+    "lucide-react": "^0.561.0",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "^0.173.0"
+    "recharts": "^3.6.0",
+    "three": "^0.173.0",
+    "ua-parser-js": "^2.0.7",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@prisma/client": "^5.22.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/uuid": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
+    "prisma": "^5.22.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

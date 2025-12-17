@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
+import { ContactModal } from "@/components/analytics/contact-modal";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,7 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AnalyticsProvider>
+            {children}
+            <ContactModal />
+        </AnalyticsProvider>
       </body>
     </html>
   );

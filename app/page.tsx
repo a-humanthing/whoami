@@ -25,7 +25,7 @@ export default function Page() {
              <ul className="list-inside text-sm text-center font-[family-name:var(--font-geist-mono)] max-w-2xl space-y-4">
               <li>
                 <code className="bg-black/20 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg font-semibold inline-block">
-                  Software Engineer who's trying to create innovation solutions.
+                  I make ideas into reliable products with scalable code.
                 </code>
               </li>
               <li className="text-slate-300 px-4 leading-relaxed bg-black/10 backdrop-blur-sm rounded-lg py-2">

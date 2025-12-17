@@ -1,30 +1,44 @@
+import React, { Suspense } from "react";
+import GenerativeMountainScene from "@/components/ui/mountain-scene";
 import { doto } from "./font";
-import Character from "./Character";
 
 export default function Page() {
   return (
-    <>
-      <div className="h-screen relative">
-        <Character />
-        <div className="absolute xs:top-3/4 top-1/2 left-0 right-0 flex items-center sm:m-4 justify-center bg-transparent bg-opacity-50 text-white text-lg font-semibold rounded-lg">
-          <main className="flex flex-col gap-8 row-start-2 items-center sm:items-center">
-            <h1 className={`${doto.className} text-6xl`}>arunKrishna</h1>
-            <ul className="list-inside text-sm text-center sm:text-center font-[family-name:var(--font-geist-mono)]">
-              <li className="mb-2">
-                <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-                  Software Engineer who's trying to create innovative solutions.
+    <main className="relative w-full h-screen bg-[#0f172a] overflow-hidden text-slate-100 font-[family-name:var(--font-geist-mono)]">
+        {/* Background Scene */}
+      <Suspense fallback={<div className="w-full h-full bg-[#0f172a]" />}>
+        <div className="absolute inset-0 z-0">
+             <GenerativeMountainScene />
+        </div>
+      </Suspense>
+
+      {/* Overlay Content */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+        <div className="flex flex-col gap-8 items-center justify-center p-8 pointer-events-auto">
+            
+            {/* Name */}
+            <h1 className={`${doto.className} text-6xl text-center drop-shadow-lg`}>
+                arunKrishna
+            </h1>
+
+            {/* Taglines */}
+             <ul className="list-inside text-sm text-center font-[family-name:var(--font-geist-mono)] max-w-2xl space-y-4">
+              <li>
+                <code className="bg-black/20 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg font-semibold inline-block">
+                  Software Engineer who's trying to create innovation solutions.
                 </code>
               </li>
-              <li>
+              <li className="text-slate-300 px-4 leading-relaxed bg-black/10 backdrop-blur-sm rounded-lg py-2">
                 Presently focused on development with javascript based
-                solutions, <b>Experienced in e2e Software Product Lifecyle.</b>
+                solutions, experienced in Standard Product Based Development
+                Lifecyle.
               </li>
             </ul>
 
-            <div className="flex gap-4 items-center flex-col sm:flex-row">
-              <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+            {/* Links */}
+             <footer className="flex gap-6 flex-wrap items-center justify-center mt-4">
                 <a
-                  className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                  className="flex items-center gap-2 hover:underline hover:underline-offset-4 hover:text-sky-300 transition-colors"
                   href="/arunKrishnaV1.pdf"
                   download="ArunKrishna.pdf"
                   rel="noopener noreferrer"
@@ -32,7 +46,7 @@ export default function Page() {
                   Resume
                 </a>
                 <a
-                  className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                  className="flex items-center gap-2 hover:underline hover:underline-offset-4 hover:text-sky-300 transition-colors"
                   href="https://github.com/a-humanthing"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -40,7 +54,7 @@ export default function Page() {
                   Github
                 </a>
                 <a
-                  className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                  className="flex items-center gap-2 hover:underline hover:underline-offset-4 hover:text-sky-300 transition-colors"
                   href="https://www.linkedin.com/in/arunkrishnakt/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -48,7 +62,7 @@ export default function Page() {
                   LinkedIn
                 </a>
                 <a
-                  className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                  className="flex items-center gap-2 hover:underline hover:underline-offset-4 hover:text-sky-300 transition-colors"
                   href="https://www.instagram.com/a.humanthing"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -56,10 +70,8 @@ export default function Page() {
                   Instagram
                 </a>
               </footer>
-            </div>
-          </main>
         </div>
       </div>
-    </>
+    </main>
   );
 }

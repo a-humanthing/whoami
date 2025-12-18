@@ -63,6 +63,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://arunkrishnakt.netlify.app",
   },
+  verification: {
+    google: 'hay1fWAWGbcxhpRYhT3DqDEdB0oGRbgHvTnELNUW_4Y',
+  },
 };
 
 import JsonLd from "@/components/seo/json-ld";

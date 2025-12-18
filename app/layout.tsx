@@ -16,10 +16,56 @@ const geistMono = Geist_Mono({
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Arun Krishna- whoami",
-  description:
-    "I'm a software engineerFullstack Web Developer with 2 Year of broad and depth Industrial Experience in Developing and Maintaining Product Based Software with Best Practices. Currently focused on development with MERN. Keen in Developing software which make impact in Daily living . Proficient In core Javascript concepts",
+  metadataBase: new URL("https://arunkrishnakt.netlify.app"), // Assuming domain, or use process.env.NEXT_PUBLIC_BASE_URL
+  title: {
+    default: "Arun Krishna - Software Engineer | India",
+    template: "%s | Arun Krishna"
+  },
+  description: "Arun Krishna is a Full Stack Web Developer with 3+ years of experience in MERN stack, Next.js, and NestJS. Building scalable software solutions at Livello and Guidesly.",
+  keywords: ["Arun Krishna", "Full Stack Developer", "MERN Stack", "NestJS", "Next.js", "React", "TypeScript", "Livello", "Guidesly", "India"],
+  authors: [{ name: "Arun Krishna", url: "https://arunkrishnakt.netlify.app" }],
+  creator: "Arun Krishna",
+  publisher: "Arun Krishna",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://arunkrishnakt.netlify.app",
+    title: "Arun Krishna - Software Engineer | India",
+    description: "Full Stack Engineer specializing in modern web technologies. Building scalable solutions at Guidesly.",
+    siteName: "Arun Krishna Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg", // Needs to be added to public/ or opengraph-image.tsx created
+        width: 1200,
+        height: 630,
+        alt: "Arun Krishna - Software Engineer",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arun Krishna - Software Engineer",
+    description: "Building scalable web solutions. Software Engineer at Guidesly.",
+    creator: "@arunkrishna", // Replace with actual handle if different
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://arunkrishnakt.netlify.app",
+  },
 };
+
+import JsonLd from "@/components/seo/json-ld";
 
 export default function RootLayout({
   children,
@@ -31,6 +77,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <JsonLd />
         <AnalyticsProvider>
             {children}
             <ContactModal />

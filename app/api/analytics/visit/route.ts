@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     const deviceType = parser.getDevice().type || 'desktop';
 
     // GeoIP
-    const location = getLocation(ip);
+    const location = await getLocation(ip);
 
     // 1. Ensure Visitor Exists
     let visitor = await prisma.visitor.findUnique({

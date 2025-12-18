@@ -11,15 +11,23 @@ export function anonymizeIp(ip: string): string {
   return crypto.createHash('sha256').update(`${ip}-${date}-${salt}`).digest('hex');
 }
 
-export function getLocation(ip: string) {
-  // GeoIP-lite fails in Next.js Server Components build due to data file bundling
-  // Returning null/unknown for now to unblock build.
-  // Future improvement: Use an external API or a compatible DB.
-  return {
-    country: 'Unknown',
-    region: 'Unknown',
-    city: 'Unknown'
-  };
+export async function getLocation(ip: string) {
+  try {
+    const res = await fetch(`https://ipinfo.io/${ip}/json`);
+    const data = await res.json();
+    return {
+      country: data.country || 'Unknown',
+      region: data.region || 'Unknown',
+      city: data.city || 'Unknown'
+    };
+  } catch (error) {
+    console.error('GeoIP Lookup Error:', error);
+    return {
+      country: 'Unknown',
+      region: 'Unknown',
+      city: 'Unknown'
+    };
+  }
 }
 
 export async function getClientIp() {

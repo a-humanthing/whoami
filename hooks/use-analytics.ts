@@ -8,6 +8,7 @@ export function useAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const startTimeRef = useRef<number>(Date.now());
+  const pageViewIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     // Initialize Visitor ID
@@ -31,7 +32,7 @@ export function useAnalytics() {
     // Send Visit Beacon
     const sendVisit = async () => {
       try {
-        await fetch('/api/analytics/visit', {
+        const response = await fetch('/api/analytics/visit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -41,6 +42,10 @@ export function useAnalytics() {
             referrer,
           }),
         });
+        const data = await response.json();
+        if (data.pageViewId) {
+          pageViewIdRef.current = data.pageViewId;
+        }
       } catch (err) {
         console.error('Failed to send analytics', err);
       }
@@ -51,15 +56,17 @@ export function useAnalytics() {
     // Handle Route Change / Unmount (Exit)
     const handleUnmount = async () => {
       const duration = Math.floor((Date.now() - startTimeRef.current) / 1000);
+      const pageViewId = pageViewIdRef.current;
+      
       try {
         // Use navigator.sendBeacon for reliability on unload
-        const blob = new Blob([JSON.stringify({ sessionId, duration })], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify({ sessionId, duration, pageViewId })], { type: 'application/json' });
         navigator.sendBeacon('/api/analytics/exit', blob);
       } catch (e) {
         // fallback fetch
          fetch('/api/analytics/exit', {
             method: 'POST',
-            body: JSON.stringify({ sessionId, duration }),
+            body: JSON.stringify({ sessionId, duration, pageViewId }),
             keepalive: true
          });
       }
@@ -68,6 +75,7 @@ export function useAnalytics() {
     return () => {
        handleUnmount();
        startTimeRef.current = Date.now(); // Reset timer for next page view
+       pageViewIdRef.current = null; // Reset pageViewId
     };
   }, [pathname, searchParams]);
 }

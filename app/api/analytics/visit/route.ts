@@ -53,19 +53,20 @@ export async function POST(request: Request) {
           id: sessionId,
           visitorId: visitor.id,
           referrer,
+          duration: 0,
         },
       });
     }
 
     // 3. Create Page View
-    await prisma.pageView.create({
+    const pageView = await prisma.pageView.create({
       data: {
         sessionId: session.id,
         path,
       },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, pageViewId: pageView.id });
   } catch (error) {
     console.error('Analytics Error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

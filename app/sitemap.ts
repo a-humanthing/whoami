@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://arunkrishnakt.netlify.app/'; // Replace with env variable if needed
+  const baseUrl = 'https://arunkrishnakt.netlify.app'; // Replace with env variable if needed
   
   return [
     {
